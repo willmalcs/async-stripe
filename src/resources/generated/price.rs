@@ -222,6 +222,7 @@ pub struct PriceTier {
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct Recurring {
+
     /// Specifies a usage aggregation strategy for prices of `usage_type=metered`.
     ///
     /// Defaults to `sum`.
@@ -236,6 +237,9 @@ pub struct Recurring {
     ///
     /// For example, `interval=month` and `interval_count=3` bills every 3 months.
     pub interval_count: u64,
+
+    /// The meter tracking the usage of a metered price.
+    pub meter: Option<String>,
 
     /// Default number of trial days when subscribing a customer to this price using [`trial_from_plan=true`](https://stripe.com/docs/api#create_subscription-trial_from_plan).
     pub trial_period_days: Option<u32>,
